@@ -42,6 +42,11 @@ def plot_predictions(predictions, class_index, predicted_label):
         )
     ])
 
+    predictions = [f"{p:.2f}%" for p in predictions]
+    predictions[class_index] = f"<b>{predictions[class_index]}</b>"
+    predictions = " | ".join(predictions)
+    predictions = f"Predictions: {predictions}"
+
     # Customize layout
     fig.update_layout(
         title="Model Predictions",
@@ -403,7 +408,7 @@ if uploaded_file is not None or selected_file is not None:
             [
                 {"type": "text", "text": user_prompt},
                 {"type": "image_url", "image_url": 
-                    {"url": f"data:image/jpeg;base64,{base64_image}"} 
+                    {"url": f"data:image/jpg;base64,{base64_image}"} 
                 }
             ]
             }
@@ -437,7 +442,7 @@ if uploaded_file is not None or selected_file is not None:
                             [
                                 {"type": "text", "text": user_prompt},
                                 {"type": "image_url", "image_url": 
-                                    {"url": f"data:image/jpeg;base64,{base64_image}"} 
+                                    {"url": f"data:image/jpg;base64,{base64_image}"} 
                                 }
                             ]
                         },
